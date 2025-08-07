@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DAY1</title>
+  <style>
+    #sticky{
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background-color: red;
+    }
+    #fixed{
+      position: fixed;
+      bottom: 10px;
+      right: 10px;
+      background-color: yellow;
+      
+    }
+    #flexbox{
+      display: flexbox;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+    .box{
+      border: 1px solid black;
+    }
+    #grid{
+      display: grid;
+      grid-template-columns: repeat(5,1fr);
+      gap: 3px;
+    }
+  </style>
+
+</head>
+<body>
+  <section id="form">
+    <form action="" onsubmit="getUserDetails(event)">
+    <input type="text" name="userName" id="userName" placeholder="Enter your Full name" >
+<input type="email" name="userEmail" id="userEmail" placeholder="Enter your Email" > <br>
+<label for="gender">Select Gender:</label>
+<input type="radio" name="gender" value="Male" id="male"><label for="male">Male</label>
+<input type="radio" name="gender" value="Female" id="female"><label for="female">Female</label> <br>
+<label >Select your skills from below: </label> <br>
+<input type="checkbox" name="skill" value="html">html
+<input type="checkbox" name="skill" value="css">css
+<input type="checkbox" name="skill" value="javascript">javascript
+<input type="checkbox" name="skill" value="react">react
+<button type="submit">submit</button>
+
+</form>
+  </section>
+<div id="formDetails"></div>
+</body>
+<section id="sticky">
+  <h3>Hey this is  position sticky Top 0 and z-index 10</h3>
+</section>
+<div id="iframe">
+  <h3>Iframe</h3>
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/aRGdDy18qfY?si=gEzBrwPVmg3eE-DY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+
+<section id="fixed">
+  <h4>Hello this is fixed postion to viewport</h4>
+</section>
+<div id="audio">
+  <h3>Audio Usage</h3>
+  <audio src="./Audio.mp3" controls muted ></audio>
+</div>
+<section id="video">
+  <h3>Video Usage</h3>
+<video src="./Video.mp4" controls muted ></video>
+</section>
+<section id="ralative">
+  <h3> For parent div postion relative used for star emojis postin absolute used </h3>
+  <div id="absolute" style="width: 200px; height:200px; border:1px black solid; position:relative ">
+<p style="position: absolute; top:2px; right:2px;">⭐</p>
+<p style="position: absolute; left:2px; bottom:2px;">⭐</p>
+<p style="position: absolute; top:2px; left:2px;">⭐</p>
+<p style="position: absolute; right:2px; bottom:2px;">⭐</p>
+  </div>
+</section>
+
+<section >
+      <h3>flexbox with 4 div in it</h3>
+
+  <div id="flexbox">
+<!-- div.box$*4{box$} -->
+
+<div class="box">box1</div>
+<div class="box">box2</div>
+<div class="box">box3</div>
+<div class="box">box4</div>
+  </div>
+</section>
+
+<section>
+  <h3>grid with 5 template columns 1fr </h3>
+  <div id="grid">
+    <div class="box">box1</div>
+    <div class="box">box2</div>
+    <div class="box">box3</div>
+    <div class="box">box4</div>
+    <div class="box">box5</div>
+    <div class="box">box6</div>
+    <div class="box">box7</div>
+    <div class="box">box8</div>
+    <div class="box">box9</div>
+    <div class="box">box10</div>
+    <div class="box">box11</div>
+    <div class="box">box12</div>
+    <div class="box">box13</div>
+    <div class="box">box14</div>
+    <div class="box">box15</div>
+    <div class="box">box16</div>
+    <div class="box">box17</div>
+    <div class="box">box18</div>
+    <div class="box">box19</div>
+    <div class="box">box20</div>
+  </div>
+</section>
+<script>
+  function getUserDetails(e){
+    e.preventDefault();
+    const userName = document.getElementById("userName").value;
+    const userEmail = document.getElementById("userEmail").value;
+    const userGender = document.querySelector('input[name="gender"]:checked')?.value;
+    const userSkill = document.querySelectorAll('input[name="skill"]:checked');
+    const userSkills = Array.from(userSkill).map(skill=>skill.value)
+    if(!userName || !userGender || userEmail || userSkill) alert("Fill all Details")
+    console.log(userSkills)
+        const displayDetails = document.getElementById("formDetails")
+    displayDetails.innerHTML=`<p>user Name: ${userName}</p>
+<p>user Email:  ${userEmail}</p>
+<p>user Gender: ${userGender}</p>
+<p>User Skills: ${userSkills.map(val=>val)}</p>
+    `
+  }
+
+</script>
+</html>
